@@ -12,9 +12,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	// Authentication : User --> Roles
 	
-	/*
 	protected void configure(AuthenticationManagerBuilder auth)
 			throws Exception {
+		
+		
 		UserDetailsManagerConfigurer<AuthenticationManagerBuilder, 
 		InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder>>.UserDetailsBuilder roles = 
 		auth.inMemoryAuthentication().passwordEncoder(org.springframework.security.crypto.password.NoOpPasswordEncoder.getInstance())
@@ -24,37 +25,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					.roles("USER", "ADMIN");
 	}
 	
-	*/
-	
-	/*
 	// Authorization : Role -> Access
 	protected void configure(HttpSecurity http) throws Exception {
 		http.httpBasic().and().authorizeRequests().antMatchers("/students/**")
 				.hasRole("USER").antMatchers("/**").hasRole("ADMIN").and()
 				.csrf().disable().headers().frameOptions().disable();
 	}
-	*/
 	
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) 
-		      throws Exception {
-		        auth.inMemoryAuthentication()
-		          .withUser("spring")
-		          .password("secret")
-		          .roles("USER");
-		    }
-	
-	@Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-          .antMatchers("/private/**")
-          .authenticated()
-          .antMatchers("/public/**")
-          .permitAll()
-          .and()
-          .httpBasic();
-    }
 
+	
+	
 	
 
 }
