@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
 	// Authentication : User --> Roles
 	
 	/*
@@ -23,6 +24,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					.roles("USER", "ADMIN");
 	}
 	
+	*/
+	
+	/*
+	// Authorization : Role -> Access
+	protected void configure(HttpSecurity http) throws Exception {
+		http.httpBasic().and().authorizeRequests().antMatchers("/students/**")
+				.hasRole("USER").antMatchers("/**").hasRole("ADMIN").and()
+				.csrf().disable().headers().frameOptions().disable();
+	}
 	*/
 	
 	@Override
@@ -45,13 +55,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
           .httpBasic();
     }
 
-	/*
-	// Authorization : Role -> Access
-	protected void configure(HttpSecurity http) throws Exception {
-		http.httpBasic().and().authorizeRequests().antMatchers("/students/**")
-				.hasRole("USER").antMatchers("/**").hasRole("ADMIN").and()
-				.csrf().disable().headers().frameOptions().disable();
-	}
-	*/
+	
 
 }
