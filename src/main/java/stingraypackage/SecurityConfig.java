@@ -12,11 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	// Authentication : User --> Roles
-	
-	
+	// Authentication
 	@Override
-	
 	protected void configure(AuthenticationManagerBuilder auth) 
 		      throws Exception {
 		        
@@ -29,7 +26,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	  		.roles("USER");	       
 	}
 	
-	
 	@Override
 	// Authorization : Role -> Access
 	protected void configure(HttpSecurity http) throws Exception {
@@ -37,10 +33,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.hasRole("USER").antMatchers("/**").hasRole("ADMIN").and()
 				.csrf().disable().headers().frameOptions().disable();
 	}
-	
-
-	
-	
-	
-
 }
