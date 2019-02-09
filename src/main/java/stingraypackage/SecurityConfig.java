@@ -31,9 +31,7 @@ CustomAuthenticationProvider customAuthProvider;
 		auth.inMemoryAuthentication()        
 			.withUser(userName)
     		.password(encoder.encode("secret"))
-	  		.roles("USER");	       
-	  		
-	  
+	  		.roles("USER");	     
 	}
 	
 	
@@ -42,6 +40,7 @@ CustomAuthenticationProvider customAuthProvider;
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.httpBasic().and().authorizeRequests().antMatchers("/status/**")
+				.hasRole("USER").antMatchers("/sqlstatus/**")
 				.hasRole("USER").antMatchers("/**").hasRole("ADMIN").and()
 				.csrf().disable().headers().frameOptions().disable();
 	}
