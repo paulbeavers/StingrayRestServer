@@ -16,10 +16,16 @@ public class StatusController {
     //--------------------------------------------------------------
 	// handle the status request for the REST API server
 	//--------------------------------------------------------------
+	
 
     @RequestMapping("/status")
     public Status status() 
     {
+    		GlobalConfig gConfig;
+			gConfig = GlobalConfig.getInstance();
+			gConfig.incrementReferenceCounter();
+			gConfig.incrementReferenceCounter();
+    		System.out.println("Reference Counter = " +  gConfig.incrementReferenceCounter());
     		Status returnStatus = new Status("OK", "REST API server is functionng.");
 			return returnStatus;
     }
