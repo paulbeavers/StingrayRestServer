@@ -6,14 +6,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class StingrayRestServerApplication {
 	
-	 
-
-	public static void main(String[] args) {
-	
+	private static void LoadInitialConfig()
+	{
 		GlobalConfig gConfig;
 		gConfig = GlobalConfig.getInstance();
 		gConfig.incrementReferenceCounter();
 		gConfig.incrementReferenceCounter();
+		return;
+	}
+
+	public static void main(String[] args) {
+		
+		LoadInitialConfig();
 		
 		SpringApplication.run(StingrayRestServerApplication.class, args);
 	}
