@@ -71,7 +71,7 @@ public class GlobalConfig {
 	//-------------------------------------------------------------------------
 	// Getter and Setter for postgresPortNumber;
 	//-------------------------------------------------------------------------
-	public static int getPostgresPortNumber()
+	public  int getPostgresPortNumber()
 	{
 		return(postgresPortNumber);
 	}
@@ -99,7 +99,7 @@ public class GlobalConfig {
 	//-------------------------------------------------------------------------
 	// Getter and Setter for postgresSystemPassword;
 	//-------------------------------------------------------------------------
-	public static String getPostgresSystemPassword()
+	public String getPostgresSystemPassword()
 	{
 		return(postgresSystemPassword);
 	}
@@ -115,10 +115,10 @@ public class GlobalConfig {
 	//-------------------------------------------------------------------------
 	public static void loadTestConfigData()
 	{
-		setPostgresHostname("localhost");
+		setPostgresHostname("userver");
 		setPostgresPortNumber(5432);
-		setPostgresSystemUser("STRINGRAY");
-		setPostgresSystemUser("stringraypw");
+		setPostgresSystemUser("stingray_user");
+		setPostgresSystemPassword("stingraypw");
 	}
 	
 	//-------------------------------------------------------------------------

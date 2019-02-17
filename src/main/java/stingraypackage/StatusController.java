@@ -36,13 +36,18 @@ public class StatusController {
     @RequestMapping("/sqlstatus")
     public Status sqlstatus()
     {	
+    	GlobalConfig gConfig;
+		gConfig = GlobalConfig.getInstance();
+		
+		String connectString = "jdbc:postgresql://" + gConfig.getPostgresHostname() + 
+				":" + gConfig.getPostgresPortNumber() + "/stingraydb";
+		
     	Status returnStatus = null;
 		try {
 			Connection connection = null;
-			connection = DriverManager.getConnection(
-					"jdbc:postgresql://127.0.0.1:5432/stingraydb", "stingray_user",
-					"stingraypw");
 			
+			connection = DriverManager.getConnection(connectString, gConfig.getPostgresSystemUser(),
+					gConfig.getPostgresSystemPassword());
 			
 			if (connection == null)
 			{
