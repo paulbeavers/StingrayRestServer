@@ -15,6 +15,10 @@ public class GlobalConfig {
 	//---------------------------------------------------------------------------
 	
 	private static int referenceCounter;
+	private static String postgresSystemUser;
+	private static String postgresSystemPassword;
+
+
 	private static String postgresHostname;
 	private static int postgresPortNumber;
 	private static GlobalConfig instance = null;
@@ -35,6 +39,7 @@ public class GlobalConfig {
 		if(instance == null) 
 		{
 	         instance = new GlobalConfig();
+	         loadTestConfigData();
 	         referenceCounter = 0;
 	    }
 	    return instance;
@@ -57,7 +62,7 @@ public class GlobalConfig {
 		return(postgresHostname);
 	}
 	
-	public void setPostgresHostname(String passedHostname)
+	public static void setPostgresHostname(String passedHostname)
 	{
 		postgresHostname = passedHostname;
 		return;
@@ -66,14 +71,64 @@ public class GlobalConfig {
 	//-------------------------------------------------------------------------
 	// Getter and Setter for postgresPortNumber;
 	//-------------------------------------------------------------------------
-	public int getPostgresPortNumber()
+	public static int getPostgresPortNumber()
 	{
 		return(postgresPortNumber);
 	}
 	
-	public void setPostgresPortNumber(int passedPortNumber)
+	public static void setPostgresPortNumber(int passedPortNumber)
 	{
 		postgresPortNumber = passedPortNumber;
 		return;
+	}
+	
+	//-------------------------------------------------------------------------
+	// Getter and Setter for postgresSystemUser;
+	//-------------------------------------------------------------------------
+	public String getPostgresSystemUser()
+	{
+		return(postgresSystemUser);
+	}
+		
+	public static void setPostgresSystemUser(String passedPostgresSystemUser)
+	{
+		postgresSystemUser = passedPostgresSystemUser;
+		return;
+	}
+		
+	//-------------------------------------------------------------------------
+	// Getter and Setter for postgresSystemPassword;
+	//-------------------------------------------------------------------------
+	public static String getPostgresSystemPassword()
+	{
+		return(postgresSystemPassword);
+	}
+			
+	public static void setPostgresSystemPassword(String passedPostgresSystemPassword)
+	{
+		postgresSystemPassword = passedPostgresSystemPassword;
+		return;
+	}
+		
+	//-------------------------------------------------------------------------
+    // loadTestConfigData
+	//-------------------------------------------------------------------------
+	public static void loadTestConfigData()
+	{
+		setPostgresHostname("localhost");
+		setPostgresPortNumber(5432);
+		setPostgresSystemUser("STRINGRAY");
+		setPostgresSystemUser("stringraypw");
+	}
+	
+	//-------------------------------------------------------------------------
+    // loadConfigData
+	//-------------------------------------------------------------------------
+	public static void loadConfigData()
+	{
+		setPostgresHostname("localhost");
+		setPostgresPortNumber(5432);
+		setPostgresSystemUser("STRINGRAY");
+		setPostgresSystemUser("stringraypw");
 	}
 }
