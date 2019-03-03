@@ -17,7 +17,6 @@ public class StatusController {
 	// handle the status request for the REST API server
 	//--------------------------------------------------------------
 	
-
     @RequestMapping("/status")
     public Status status() 
     {
@@ -57,10 +56,10 @@ public class StatusController {
 			{
 				Statement stmt = connection.createStatement();
 				ResultSet rs = 
-				stmt.executeQuery("SELECT user_id, password FROM stingray_users");
+				stmt.executeQuery("SELECT user_email, password FROM stingray_users");
 				
 				while (rs.next()) {
-					  String userID = rs.getString("user_id");
+					  String userID = rs.getString("user_email");
 					  String password = rs.getString("password");
 					  System.out.println(userID);
 					  System.out.println(password);
