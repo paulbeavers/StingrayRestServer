@@ -10,8 +10,6 @@ public class StingrayRestServerApplication {
 	{
 		GlobalConfig gConfig;
 		gConfig = GlobalConfig.getInstance();
-		gConfig.incrementReferenceCounter();
-		gConfig.incrementReferenceCounter();
 		return;
 	}
 

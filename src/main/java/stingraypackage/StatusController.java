@@ -22,8 +22,6 @@ public class StatusController {
     {
     		GlobalConfig gConfig;
 			gConfig = GlobalConfig.getInstance();
-			gConfig.incrementReferenceCounter();
-			gConfig.incrementReferenceCounter();
     		System.out.println("Reference Counter = " +  gConfig.incrementReferenceCounter());
     		Status returnStatus = new Status("OK", "REST API server is functionng.");
 			return returnStatus;
