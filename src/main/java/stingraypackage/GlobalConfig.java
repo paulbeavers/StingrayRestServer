@@ -115,7 +115,7 @@ public class GlobalConfig {
 	//-------------------------------------------------------------------------
 	public static void loadTestConfigData()
 	{
-		setPostgresHostname("localhost");
+		setPostgresHostname("192.168.156.194");
 		setPostgresPortNumber(5432);
 		setPostgresSystemUser("stingray_user");
 		setPostgresSystemPassword("stingraypw");
