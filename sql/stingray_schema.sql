@@ -43,3 +43,12 @@ CREATE TABLE stingray_message (tenant_name text NOT NULL,
 
 GRANT all on stingray_message to stingray_user;
 
+CREATE TABLE stingray_heartbeat (tenant_name text NOT NULL,
+        hostname text NOT NULL,
+        uuid text NOT NULL,
+        message text NOT NULL,
+        systemtime text NOT NULL,
+        create_time TIMESTAMPTZ NOT NULL DEFAULT NOW() );
+
+GRANT all on stingray_heartbeat to stingray_user;
+
