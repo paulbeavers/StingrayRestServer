@@ -1,5 +1,10 @@
 package stingraypackage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 //--------------------------------------------------------------------------
 // GlobalConfig is a singleton instance for the purpose of managing the 
@@ -131,4 +136,53 @@ public class GlobalConfig {
 		setPostgresSystemUser("STRINGRAY");
 		setPostgresSystemUser("stringraypw");
 	}
+	
+	//----------------------------------------------------------------------------------
+	// Check to make sure this user is allowed to act on behalf of the specified tenant
+	//----------------------------------------------------------------------------------
+	
+	boolean validForTenant(String username, String tenant_name)
+	{
+		boolean success = false;
+		
+		String connectString = "jdbc:postgresql://" + this.getPostgresHostname() + 
+				":" + this.getPostgresPortNumber() + "/stingraydb";
+		
+		try {
+			Connection connection = null;
+			
+			connection = DriverManager.getConnection(connectString, this.getPostgresSystemUser(),
+					this.getPostgresSystemPassword());
+			
+			if (connection == null)
+			{
+				System.out.println("connection is null");
+			}
+			else
+			{
+				Statement stmt = connection.createStatement();
+				ResultSet rs = 
+						stmt.executeQuery("SELECT tenant_role FROM stingray_tenant_users where user_email = '" 
+								+ username + "' and tenant_name = '" + tenant_name + "'");
+				
+				if (rs.next() ) 
+				{
+					success = true;
+					System.out.println("Tenant is valid.");
+				}
+				else
+				{
+					success = false;
+					System.out.println("Tenant is invalid.");
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return success;
+	}
+	
+	
 }
