@@ -20,7 +20,8 @@ curl -H "Content-Type: application/json"  \
         -u master@stingraydb.io:stingraypw \
 -d  @<(cat <<EOF
 
-{  "name":"Tenant 3",
+{   "tenant_name": "stingraydb.io", 
+    "name":"master@singraydb.io",
     "uuid":"$uuid",
     "hostname":"$hostname",
     "systemtime":"$systemtime",

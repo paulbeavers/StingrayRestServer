@@ -14,7 +14,7 @@ curl -H "Content-Type: application/json"  \
         -u master@stingraydb.io:stingraypw \
 -d  @- <<'EOF'
 
-{  "tenant_name":"Tenant 3",
+{  "tenant_name":"stingraydb.io",
     "user_id":"paul",
     "password":"donald",
     "role":"ADMIN"
