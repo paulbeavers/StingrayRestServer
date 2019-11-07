@@ -52,3 +52,14 @@ CREATE TABLE stingray_heartbeat (tenant_name text NOT NULL,
 
 GRANT all on stingray_heartbeat to stingray_user;
 
+CREATE TABLE stingray_entity (tenant_name text NOT NULL,
+	entity_id text NOT NULL,
+	entity_description text NOT NULL,
+	entity_parent_id text NOT NULL,
+	entity_type text NOT NULL,
+	create_time TIMESTAMPTZ NOT NULL DEFAULT NOW() );
+
+CREATE UNIQUE INDEX stingray_entity_index ON stingray_entity (tenant_name, entity_id, entity_type);
+
+GRANT all on stingray_entity to stingray_user;
+

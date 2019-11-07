@@ -42,6 +42,7 @@ CustomAuthenticationProvider customAuthProvider;
 		http.httpBasic().and().authorizeRequests().antMatchers("/status/**")
 				.hasRole("USER").antMatchers("/sqlstatus/**")
 				.hasRole("USER").antMatchers("/event/**")
+				.hasRole("USER").antMatchers("/entity/**")
 				.hasRole("USER").antMatchers("/heartbeat/**")
 				.hasRole("USER").antMatchers("/**").hasRole("ADMIN").and()
 				.csrf().disable().headers().frameOptions().disable();

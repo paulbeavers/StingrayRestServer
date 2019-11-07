@@ -4,6 +4,7 @@ package stingraypackage;
 import org.json.simple.JSONArray; 
 import org.json.simple.JSONObject; 
 import org.json.simple.parser.*; 
+import java.util.Iterator;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.http.HttpEntity;
@@ -38,6 +39,13 @@ public class EventController {
 	    JSONParser parser = new JSONParser();
 	    JSONObject jsonObject = (JSONObject) parser.parse(jsonString);
 	    
+	    Iterator iterator = jsonObject.keySet().iterator();
+	    while(iterator.hasNext())
+	    {
+	    	String key = (String) iterator.next();
+	        System.out.println(key + ":" +  jsonObject.get(key));	
+	    }
+	    	    
 	    String tenant_name = (String) jsonObject.get("tenant_name");  
 	    System.out.println(tenant_name);
 	    

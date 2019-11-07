@@ -10,25 +10,16 @@ echo GetRestStatus.bash
 #-------------------------------------------------------------
 
 curl -H "Content-Type: application/json"  \
-        -X POST http://localhost:8080/event \
+        -X POST http://localhost:8080/entity \
         -u master@stingraydb.io:stingraypw \
 -d  @- <<'EOF'
 {  "tenant_name":"stingraydb.io",
-    "user_id":"paul",
-    "password":"donald",
-    "role":"ADMIN",
-    "groups" : [ 
-      { "name" : "group1",
-	"owner" : "paulb",
-        "member" : "debbie" 
-      },
-      { "name" : "group2",
-	"owner" : "paulb",
-        "member" : "debbie" 
-      } ],
-     "end" : "ending text" 
+    "entity_id":"127638",
+    "entity_type":"device",
+    "entity_description":"generic device",
+    "entity_parent_id": "0",
+    "device_ip_address" : "127.1.1.1"
 }
-
 EOF
 
 
